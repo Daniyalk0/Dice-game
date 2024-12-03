@@ -5,7 +5,7 @@ const Dice = ({ roleDice, diceClick, resetScore, rule }) => {
     <div className="flex flex-col w-full items-center justify-center gap-4">
       <div className="">
         <img
-          src={`./public/images/dice/dice_${roleDice}.png`}
+          src={`./src/assets/images/dice/dice_${roleDice}.png`}
           alt=""
           className="w-40 cursor-pointer xs:w-[36vw]"
           onClick={diceClick}
