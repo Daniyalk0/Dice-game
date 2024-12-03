@@ -13,14 +13,14 @@ const NumberSelector = ({
   };
   return (
     <div className="w-78 h-24 flex flex-col justify-center">
-      <h2 className="text-center font-semibold text-red-600 text-sm">
+      <h2 className="text-center font-semibold text-red-600 text-sm xs:text-[3vw]">
         {error}
       </h2>
       <div className="flex gap-2">
         {arr.map((value, index) => {
           return (
             <div
-              className={`font-semibold text-1xl border-2 border-black w-12  h-12 flex items-center justify-center ${
+              className={`font-semibold text-1xl border-2 border-black w-12  h-12 flex items-center justify-center xs:w-10 xs:h-10 ${
                 selectedNumber == value ? "bg-zinc-900 text-white" : ""
               } cursor-pointer`}
               onClick={() => isSelectedd(value)}
@@ -31,7 +31,7 @@ const NumberSelector = ({
           );
         })}
       </div>
-      <h1 className="text-right font-semibold">Select Any Number</h1>
+      <h1 className="text-right font-semibold xs:text-[3vw] ">Select Any Number</h1>
     </div>
   );
 };
