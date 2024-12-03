@@ -3,6 +3,7 @@ import Score from "./Score";
 import NumberSelector from "./NumberSelector";
 import Dice from "./Dice";
 import Rules from "./Rules";
+import rollDiceSound from './assets/rollDice.mp3';
 
 const GamePlay = () => {
   const [selectedNumber, setSelectedNumber] = useState();
@@ -15,26 +16,11 @@ const GamePlay = () => {
     setrules((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (ruless) {
-      window.scrollTo({
-        top: document.body.scrollHeight, // Scroll to the bottom of the page
-        behavior: 'smooth', // Smooth scrolling
-      });
-    } else {
-      window.scrollTo({
-        top: 0, // Scroll to the top of the page
-        behavior: 'smooth', // Smooth scrolling
-      });
-    }
-
-    
-  }, [ruless]); // Re-run effect when `scrollToBottom` changes
 
   function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  const audio = new Audio('/src/assets/rollDice.mp3');
+  const audio = new Audio(rollDiceSound);
 
   const diceClick = () => {
     if (!selectedNumber) {
@@ -43,7 +29,7 @@ const GamePlay = () => {
     }
     const random = getRandomNumber(1, 6); // Roll the dice
     setRoleDice(random);
-audio.play()
+    audio.play().catch((error) => console.error('Playback failed:', error));
     console.log(random); // Log the result
     setSelectedNumber("");
     if (selectedNumber === random) {
